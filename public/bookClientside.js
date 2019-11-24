@@ -8,7 +8,7 @@ function getAllBooks() {
     for (var i = 0; i < data.list.length; i++) {
       var book = data.list[i];
 
-      $("#ulBooks").append("<li>" + book.title + " by " + book.author + "</li>");
+      $("#ulBooks").append("<li>" + book.title + " by " + book.full_name + "</li>");
     }
   })
 }
