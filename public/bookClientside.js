@@ -1,4 +1,6 @@
 function getAllBooks() {
+  $("#ulBooks").empty();
+
   console.log("Getting books");
 
   $.get("/list", function (data) {
