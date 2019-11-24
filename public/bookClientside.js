@@ -1,9 +1,7 @@
 function getAllBooks() {
   console.log("Getting books");
 
-  $.get("/list", {
-    book: book
-  }, function (data) {
+  $.get("/list", function (data) {
     console.log("Got list from server:");
     console.log(data);
 
