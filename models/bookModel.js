@@ -8,7 +8,7 @@ const pool = new Pool({
 });
 
 
-function getAllBooks() {
+function getAllBooks(callback) {
   console.log("Listing all books...");
 
   var query = "SELECT book.title, author.full_name FROM book, author WHERE book.author = author.id;"
