@@ -26,6 +26,22 @@ function getAllBooks(callback) {
   });
 }
 
+function insertNewBook(title, author, callback) {
+  var query = "INSERT INTO book (title, author) VALUES('Lion, Witch, Wardrobe', 2);";
+  pool.query(query, function (err, db_results) {
+    if (err) {
+      throw err;
+    } else {
+      var results = {
+        success: true,
+        list: db_results.rows
+      };
+
+      callback(null, results);
+    }
+  });
+}
+
 module.exports = {
   getAllBooks: getAllBooks
 };

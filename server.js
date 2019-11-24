@@ -14,6 +14,7 @@ app.use(express.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.render('/index'));
 app.get("/list", bookController.getBookList);
+app.post("/book", bookController.insertNewBook);
 
 
 app.listen(port, () => {

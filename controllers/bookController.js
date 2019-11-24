@@ -7,6 +7,16 @@ function getBookList(req, res) {
   });
 }
 
+function insertNewBook(req, res) {
+  var book = "The Hobbit";
+  var author = "JRR Tolkien";
+
+  bookModel.insertNewBook(book, author, function (err, results) {
+    res.json(results);
+  })
+}
+
 module.exports = {
-  getBookList: getBookList
+  getBookList: getBookList,
+  insertNewBook: insertNewBook
 }
