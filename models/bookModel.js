@@ -13,3 +13,7 @@ function getAllBooks() {
 
 
 }
+
+module.exports = {
+  getAllBooks: getAllBooks
+};
