@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>biblioTECH</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="books-clientside.js"></script>
 </head>
 
 <body>
@@ -13,7 +15,13 @@
   <h2>Your Personal Online Bookshelf!</h2>
 
   <p>List all books:</p>
-  <button type="button">Book List</button>
+  <button type="button" onclick="getAllBooks()">Book List</button>
+  <div>
+    <h2>Results</h2>
+    <ul id="ulBooks">
+
+    </ul>
+  </div>
 </body>
 
 </html>
