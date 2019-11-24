@@ -1,3 +1,3 @@
-\i drop.sql
-\i create.sql
-\i insert.sql
+\i db/drop.sql
+\i db/create.sql
+\i db/insert.sql

@@ -1,8 +1,4 @@
-CREATE TABLE user (
-  id SERIAL NOT NULL PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
-);
+CREATE SCHEMA public;
 
 CREATE TABLE author (
   id SERIAL NOT NULL PRIMARY KEY,
@@ -12,16 +8,16 @@ CREATE TABLE author (
 CREATE TABLE book (
   id SERIAL NOT NULL PRIMARY KEY, 
   title VARCHAR(255) NOT NULL,
-  author INT NOT NULL REFERENCES author.id
+  author INT NOT NULL REFERENCES author(id)
 );
 
 CREATE TABLE category (
   id SERIAL NOT NULL PRIMARY KEY, 
   category_name VARCHAR(255) NOT NULL
-)
+);
 
 CREATE TABLE shelf (
   id SERIAL NOT NULL PRIMARY KEY,
-  category_id INT NOT NULL REFERENCES category.id,
-  book_id INT NOT NULL REFERENCES book.id
-)
+  category_id INT NOT NULL REFERENCES category(id),
+  book_id INT NOT NULL REFERENCES book(id)
+);
