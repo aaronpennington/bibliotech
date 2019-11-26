@@ -16,7 +16,16 @@ function insertNewBook(req, res) {
   })
 }
 
+function searchBook(req, res) {
+  var title = req.query.title;
+  console.log("TITLE: " + title);
+  bookModel.searchBook(title, function (err, results) {
+    res.send(results);
+  })
+}
+
 module.exports = {
   getBookList: getBookList,
-  insertNewBook: insertNewBook
+  insertNewBook: insertNewBook,
+  searchBook: searchBook
 }

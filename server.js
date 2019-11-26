@@ -11,9 +11,12 @@ app.use(express.urlencoded({
   extended: true
 })); // to support URL-encoded bodies
 
+// EXAMPLE API CALL: https://www.goodreads.com/search/index.xml?key=CByUHqQdOsPZDGkNX44onQ&q=Ender%27s+Game
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.render('/index'));
 app.get("/list", bookController.getBookList);
+app.get("/search", bookController.searchBook);
 app.post("/book", bookController.insertNewBook);
 
 

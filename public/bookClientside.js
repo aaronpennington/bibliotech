@@ -14,3 +14,33 @@ function getAllBooks() {
     }
   })
 }
+
+function searchBook() {
+  $("#ulSearchResults").empty();
+
+  var title = $("#searchTitle").val();
+  console.log("Searching for " + title);
+
+  $.get("/search", {
+    title: title
+  }, function (xmlData) {
+    var data = $.parseXML(xmlData);
+    $xml = $(data);
+    $results = $xml.find("search");
+    console.log("Recieved this data: ");
+    console.log(data);
+
+    $($results).each(function () {
+      $(this).find("results>work>best_book").each(function () {
+        var tempTitle = $(this).find("title").text();
+        var tempAuthor = $(this).find("author>name").text();
+        console.log("TITLE: " + tempTitle);
+        console.log("AUTHOR: " + tempAuthor);
+        console.log("*****");
+
+        $("#ulSearchResults").append("<li><b>" + tempTitle + "</b> by " + tempAuthor + "</li>");
+      });
+    })
+
+  })
+}

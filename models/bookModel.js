@@ -2,10 +2,17 @@ const {
   Pool
 } = require("pg");
 const db_url = process.env.DATABASE_URL;
-console.log("DB URL: " + db_url);
 const pool = new Pool({
   connectionString: db_url
 });
+
+const fetch = require("node-fetch");
+
+// const fs = require("fs");
+// fs.readFile('apikey.txt', 'utf8', function (err, contents) {
+//   if (err) throw err;
+//   let apikey = contents;
+// });
 
 
 function getAllBooks(callback) {
@@ -42,6 +49,18 @@ function insertNewBook(title, author, callback) {
   });
 }
 
+function searchBook(title, callback) {
+  var query = "https://www.goodreads.com/search/index.xml?key=" + "CByUHqQdOsPZDGkNX44onQ" + "&q=" + encodeURIComponent(title);
+  console.log(query);
+  fetch(query).then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      callback(null, data);
+    })
+}
+
 module.exports = {
-  getAllBooks: getAllBooks
+  getAllBooks: getAllBooks,
+  searchBook: searchBook
 };
