@@ -24,8 +24,32 @@ function searchBook(req, res) {
   })
 }
 
+function getShelf(req, res) {
+  var shelf = req.query.shelf;
+
+  bookModel.getShelf(shelf, function (err, results) {
+    res.send(results);
+  });
+}
+
+function getShelfList(req, res) {
+  bookModel.getShelfList(function (err, results) {
+    res.send(results);
+  })
+}
+
+function addBook(req, res) {
+  var book_id = req.query.book_id;
+  bookModel.addBook(book_id, function (err, results) {
+    res.send(results);
+  })
+}
+
 module.exports = {
   getBookList: getBookList,
   insertNewBook: insertNewBook,
-  searchBook: searchBook
+  searchBook: searchBook,
+  getShelf: getShelf,
+  getShelfList: getShelfList,
+  addBook: addBook
 }

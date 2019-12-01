@@ -60,7 +60,37 @@ function searchBook(title, callback) {
     })
 }
 
+function getShelf(shelf, callback) {
+  var query = "https://www.goodreads.com/review/list/16865101.xml?key=CByUHqQdOsPZDGkNX44onQ&v=2&shelf=" + shelf;
+  fetch(query).then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      callback(null, data);
+    })
+}
+
+function getShelfList(callback) {
+  var query = "https://www.goodreads.com/shelf/list.xml?key=CByUHqQdOsPZDGkNX44onQ";
+  fetch(query).then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      callback(null, data);
+    })
+}
+
+function addBook(book_id, callback) {
+  var query = "https://www.goodreads.com/shelf/add_to_shelf.xml?key=CByUHqQdOsPZDGkNX44onQ?name=read?book_id=" + book_id;
+  fetch(query).then(function (data) {
+    callback(null, data);
+  })
+}
+
 module.exports = {
   getAllBooks: getAllBooks,
-  searchBook: searchBook
+  searchBook: searchBook,
+  getShelf: getShelf,
+  getShelfList: getShelfList,
+  addBook: addBook
 };

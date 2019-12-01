@@ -17,7 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.render('/index'));
 app.get("/list", bookController.getBookList);
 app.get("/search", bookController.searchBook);
+app.get("/review/list", bookController.getShelf);
+app.get("/shelf/list", bookController.getShelfList);
 app.post("/book", bookController.insertNewBook);
+app.post("/shelf/add_to_shelf", bookController.addBook);
 
 
 app.listen(port, () => {
