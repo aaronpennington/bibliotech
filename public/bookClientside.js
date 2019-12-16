@@ -58,7 +58,7 @@ function searchBook() {
         //   console.log("Break here @ index=" + index);
         // }
 
-        $("#row").append("<div class='col-4'><div class='card' style='width: 15rem'><img src=" + tempImage + " class='card-img-top' alt='" + tempTitle + "'><div class='card-body'><h5 class='card-title'>" + tempTitle + "</h5> <p class='card-text'>" + tempAuthor + "</p><br><button type='button' onclick='addBook(" + tempId + ")'>Add to Shelf</button></div></div></div>");
+        $("#row").append("<div class='col-4'><div class='card' style='width: 100px'><img src=" + tempImage + " class='card-img-top' alt='" + tempTitle + "'><div class='card-body'><h5 class='card-title'>" + tempTitle + "</h5> <p class='card-text'>" + tempAuthor + "</p><br><button type='button' onclick='addBook(" + tempId + ")'>Add to Shelf</button></div></div></div>");
 
         index = index + 1;
       });
@@ -116,6 +116,6 @@ function addBook(book_id) {
   $.post("/shelf/add_to_shelf", {
     name: "bibliotech",
     book_id: book_id
-  })
+  });
   console.log("Posted book with id " + book_id);
 }

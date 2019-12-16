@@ -74,7 +74,7 @@ function getShelfList(user_id, callback) {
 }
 
 function addBook(book_id, user_id, callback) {
-  var query = "https://www.goodreads.com/shelf/add_to_shelf.xml" + "&user_id=" + user_id;
+  var query = "https://www.goodreads.com/shelf/add_to_shelf.xml" + "&name=to-read&book_id=" + book_id;
   fetch(query).then(function (data) {
     callback(null, data);
   })

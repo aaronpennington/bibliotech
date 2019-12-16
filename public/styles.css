@@ -5,3 +5,15 @@ body {
 .card {
   margin-bottom: 25px;
 }
+
+#body-container {
+  margin: 0 100px 50px 100px;
+}
+
+#header-container {
+  text-align: center;
+}
+
+select {
+  margin-bottom: 25px;
+}

@@ -24,7 +24,7 @@ passport.use(
   new GoodreadsStrategy({
       consumerKey: GOODREADS_KEY,
       consumerSecret: GOODREADS_SECRET,
-      callbackURL: "https://gentle-taiga-00007.herokuapp.com/auth/goodreads/callback"
+      callbackURL: "http://localhost:5000/auth/goodreads/callback"
     },
     function (token, tokenSecret, profile, done) {
       // asynchronous verification, for effect...

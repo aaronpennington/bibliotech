@@ -39,32 +39,26 @@
       </ul>
     </div>
   </nav>
+  <div id="body-container">
+    <div id="header-container">
+      <h1>Welcome to biblioTECH</h1>
+      <h2>Your Personal Online Bookshelf!</h2>
+    </div>
 
-  <h1>Welcome to biblioTECH</h1>
-  <h2>Your Personal Online Bookshelf!</h2>
+    <br>
 
-  <br>
+    <select id="selectShelf" onchange="getShelf()">
+      <option value="test-shelf" selected>Select Shelf</option>
+    </select>
+    <div id="shelf" class="container">
+    </div>
 
-  <select id="selectShelf" onchange="getShelf()">
-    <option value="test-shelf" selected>Select Shelf</option>
-  </select>
-  <!-- <button type="button" onclick="getShelf()">Get Shelf</button> -->
-  <div id="shelf" class="container">
-  </div>
+    <br>
 
-  <!-- <p>List all books:</p>
-  <button type="button" onclick="getAllBooks()">Book List</button>
-  <div>
-    <h2>Results</h2>
-    <ul id="ulBooks">
-    </ul>
-  </div> -->
-
-  <br>
-
-  <input type="text" id="searchTitle" placeholder="Search for Book">
-  <button type="button" onclick="searchBook()">Search</button>
-  <div id="ulSearchResults" class="container">
+    <input type="text" id="searchTitle" placeholder="Search for Book">
+    <button type="button" onclick="searchBook()">Search</button>
+    <div id="ulSearchResults" class="container">
+    </div>
   </div>
 
 </body>
