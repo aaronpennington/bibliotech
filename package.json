@@ -10,7 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "node-fetch": "^2.6.0",
+    "passport": "^0.4.0",
+    "passport-goodreads": "^1.0.0",
+    "passport-oauth1": "^1.1.0",
     "pg": "^7.14.0"
   }
 }

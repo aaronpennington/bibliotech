@@ -35,7 +35,6 @@ function searchBook() {
 
     $($results).each(function () {
       $("#ulSearchResults").append("<div class='row justify-content-start' id='row'>");
-      console.log("ITERATE!");
       $(this).find("results>work>best_book").each(function () {
         var tempTitle = $(this).find("title").text();
         var tempAuthor = $(this).find("author>name").text();
@@ -49,9 +48,6 @@ function searchBook() {
             tempImage = $(this).find("small_image_url").text();
           }
         }
-        console.log("*****");
-        console.log("TITLE: " + tempTitle);
-        console.log("AUTHOR: " + tempAuthor);
 
         // var rIndex = "#row" + (index / 3);
 
@@ -65,7 +61,6 @@ function searchBook() {
         $("#row").append("<div class='col-4'><div class='card' style='width: 15rem'><img src=" + tempImage + " class='card-img-top' alt='" + tempTitle + "'><div class='card-body'><h5 class='card-title'>" + tempTitle + "</h5> <p class='card-text'>" + tempAuthor + "</p><br><button type='button' onclick='addBook(" + tempId + ")'>Add to Shelf</button></div></div></div>");
 
         index = index + 1;
-        console.log(index);
       });
       $("#ulSearchResults").append("</div>");
     })
@@ -97,7 +92,6 @@ function getShelf() {
           }
         }
         var author = $(this).find("authors>author>name").text();
-        console.log("TITLE: " + title);
         $("#shelfRow").append("<div class='col-4'><div class='card' style='width: 15rem'><img src=" + image + " class='card-img-top' alt='" + title + "'><div class='card-body'><h5 class='card-title'>" + title + "</h5> <p class='card-text'>" + author + "</p></div></div></div>");
       })
     })
@@ -120,6 +114,7 @@ function getShelfList() {
 
 function addBook(book_id) {
   $.post("/shelf/add_to_shelf", {
+    name: "bibliotech",
     book_id: book_id
   })
   console.log("Posted book with id " + book_id);

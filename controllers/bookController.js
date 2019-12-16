@@ -1,6 +1,12 @@
 const bookModel = require("../models/bookModel.js");
+const express = require("express");
+const session = require('express-session');
+
+var sess;
 
 function getBookList(req, res) {
+  sess = req.session;
+  var user_id = sess.user_id;
   bookModel.getAllBooks(function (error, results) {
     console.log("Controller RESULTS: " + results);
     res.json(results);
@@ -8,6 +14,8 @@ function getBookList(req, res) {
 }
 
 function insertNewBook(req, res) {
+  sess = req.session;
+  var user_id = sess.user_id;
   var book = "The Hobbit";
   var author = "JRR Tolkien";
 
@@ -17,30 +25,38 @@ function insertNewBook(req, res) {
 }
 
 function searchBook(req, res) {
+  sess = req.session;
+  var user_id = sess.user_id;
   var title = req.query.title;
   console.log("TITLE: " + title);
-  bookModel.searchBook(title, function (err, results) {
+  bookModel.searchBook(title, user_id, function (err, results) {
     res.send(results);
   })
 }
 
 function getShelf(req, res) {
+  sess = req.session;
+  var user_id = sess.user_id;
   var shelf = req.query.shelf;
 
-  bookModel.getShelf(shelf, function (err, results) {
+  bookModel.getShelf(shelf, user_id, function (err, results) {
     res.send(results);
   });
 }
 
 function getShelfList(req, res) {
-  bookModel.getShelfList(function (err, results) {
+  sess = req.session;
+  var user_id = sess.user_id;
+  bookModel.getShelfList(user_id, function (err, results) {
     res.send(results);
   })
 }
 
 function addBook(req, res) {
+  sess = req.session;
+  var user_id = sess.user_id;
   var book_id = req.query.book_id;
-  bookModel.addBook(book_id, function (err, results) {
+  bookModel.addBook(book_id, user_id, function (err, results) {
     res.send(results);
   })
 }

@@ -8,13 +8,6 @@ const pool = new Pool({
 
 const fetch = require("node-fetch");
 
-// const fs = require("fs");
-// fs.readFile('apikey.txt', 'utf8', function (err, contents) {
-//   if (err) throw err;
-//   let apikey = contents;
-// });
-
-
 function getAllBooks(callback) {
   console.log("Listing all books...");
 
@@ -49,7 +42,7 @@ function insertNewBook(title, author, callback) {
   });
 }
 
-function searchBook(title, callback) {
+function searchBook(title, user_id, callback) {
   var query = "https://www.goodreads.com/search/index.xml?key=" + "CByUHqQdOsPZDGkNX44onQ" + "&q=" + encodeURIComponent(title);
   console.log(query);
   fetch(query).then(function (response) {
@@ -60,8 +53,8 @@ function searchBook(title, callback) {
     })
 }
 
-function getShelf(shelf, callback) {
-  var query = "https://www.goodreads.com/review/list/16865101.xml?key=CByUHqQdOsPZDGkNX44onQ&v=2&shelf=" + shelf;
+function getShelf(shelf, user_id, callback) {
+  var query = "https://www.goodreads.com/review/list/" + user_id + ".xml?key=CByUHqQdOsPZDGkNX44onQ&v=2&shelf=" + shelf;
   fetch(query).then(function (response) {
       return response.text();
     })
@@ -70,8 +63,8 @@ function getShelf(shelf, callback) {
     })
 }
 
-function getShelfList(callback) {
-  var query = "https://www.goodreads.com/shelf/list.xml?key=CByUHqQdOsPZDGkNX44onQ";
+function getShelfList(user_id, callback) {
+  var query = "https://www.goodreads.com/shelf/list.xml?key=CByUHqQdOsPZDGkNX44onQ&user_id=" + user_id;
   fetch(query).then(function (response) {
       return response.text();
     })
@@ -80,8 +73,8 @@ function getShelfList(callback) {
     })
 }
 
-function addBook(book_id, callback) {
-  var query = "https://www.goodreads.com/shelf/add_to_shelf.xml?key=CByUHqQdOsPZDGkNX44onQ?name=read?book_id=" + book_id;
+function addBook(book_id, user_id, callback) {
+  var query = "https://www.goodreads.com/shelf/add_to_shelf.xml" + "&user_id=" + user_id;
   fetch(query).then(function (data) {
     callback(null, data);
   })
